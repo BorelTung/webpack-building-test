@@ -1,0 +1,54 @@
+@import 'setting';
+
+@mixin no-selection {
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
+}
+
+@mixin text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin opacity($opacity:50) {
+  opacity: $opacity / 100;
+  @if $filter{
+    filter: alpha(opacity=$opacity);
+  }
+}
+
+@mixin animation($name, $duration, $function: ease, $delay: 0s, $count: 1, $mode: none) {
+  -webkit-animation: $name $duration $function $delay $count $mode;
+     -moz-animation: $name $duration $function $delay $count $mode;
+      -ms-animation: $name $duration $function $delay $count $mode;
+       -o-animation: $name $duration $function $delay $count $mode;
+          animation: $name $duration $function $delay $count $mode;
+}
+
+@mixin keyframes( $animationName ){
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-ms-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}
