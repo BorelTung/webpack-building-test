@@ -17,7 +17,7 @@ fs.writeFileSync(path.join(__dirname, '../.tmp/index.html'), htmlStr, 'utf8');
 // Add needed plugins here
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var config = _.assign({}, baseConfig, {
+var config = _.assign(_.cloneDeep(baseConfig), {
   output: {
     publicPath: publicPath,
     path: path.join(__dirname, '../dist/v2/assets/'),

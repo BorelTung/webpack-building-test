@@ -5,7 +5,7 @@ var _ = require('lodash');
 var baseConfig = require('./base');
 
 // merge baseConfig, replace properties with the same name, not recursively
-var config = _.assign({}, baseConfig, {
+var config = _.assign(_.cloneDeep(baseConfig), {
   entry: {
     app: [
       'webpack-dev-server/client?http://127.0.0.1:8000',
